@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 2631176316
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: ui/res/common_bg_01.png.ab
+      Dependencies: {}
+    Info_1:
+      Name: ui/res/common_bg_02.png.ab
+      Dependencies: {}
+    Info_2:
+      Name: ui/res/common_bg_03.png.ab
+      Dependencies: {}
+    Info_3:
+      Name: ui/res/common_bg_04.png.ab
+      Dependencies: {}
+    Info_4:
+      Name: ui/res/common_bg_05.png.ab
+      Dependencies: {}
