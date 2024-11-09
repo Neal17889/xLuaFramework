@@ -17,7 +17,15 @@ public class PathUtil
     /// <summary>
     /// bundle输出目录
     /// </summary>
-    public static readonly string BundleOutPath = Application.streamingAssetsPath;
+    public static readonly string BundleOutPath = Application.streamingAssetsPath;//这个目录是只读的
+
+    /// <summary>
+    /// bundle资源路径
+    /// </summary>
+    public static string BundleResourcePath
+    {//给版本信息.txt用的目录
+        get { return Application.streamingAssetsPath; }//这个目录是只读的
+    }
 
     /// <summary>
     /// 获取Unity的相对路径
