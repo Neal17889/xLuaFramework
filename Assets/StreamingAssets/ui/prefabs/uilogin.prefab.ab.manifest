@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 2693821138
+CRC: 1210060256
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e92a2f8e7b9ddfec832755178c7eac20
+    Hash: 58df4a535a7e7f15fbf2e9d0eb7d8a94
   TypeTreeHash:
     serializedVersion: 2
     Hash: 3a5fbaab1e180b1b4ae5003eea655cae
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: e92a2f8e7b9ddfec832755178c7eac20
+    Hash: 58df4a535a7e7f15fbf2e9d0eb7d8a94
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -54,6 +54,6 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.SpriteState
 Assets:
-- Assets/BuildResources/UI/Prefab/UILogin.prefab
+- Assets/BuildResources/UI/Prefabs/UILogin.prefab
 Dependencies:
 - D:/Program Files/Unity/Projects/xLua-Framework/Assets/StreamingAssets/ui/res/common_bg_02.png.ab

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1519599026
+CRC: 1560302761
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: ui/prefab/uilogin.prefab.ab
+      Name: ui/prefabs/uilogin.prefab.ab
       Dependencies:
         Dependency_0: ui/res/common_bg_02.png.ab
     Info_1:
