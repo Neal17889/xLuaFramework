@@ -23,8 +23,13 @@ public class PathUtil
     /// bundle资源路径
     /// </summary>
     public static string BundleResourcePath
-    {//给版本信息.txt用的目录
-        get { return Application.streamingAssetsPath; }//这个目录是只读的
+    {
+        get 
+        {
+            if (AppConst.GameMode == GameMode.UpdateMode)
+                return Application.persistentDataPath; //这个目录是可读写的,***iOS不能用这个目录***
+            return Application.streamingAssetsPath; //这个目录是只读的
+        }
     }
 
     /// <summary>
