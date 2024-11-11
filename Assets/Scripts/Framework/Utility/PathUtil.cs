@@ -20,6 +20,16 @@ public class PathUtil
     public static readonly string BundleOutPath = Application.streamingAssetsPath;//这个目录是只读的
 
     /// <summary>
+    /// 只读目录
+    /// </summary>
+    public static readonly string ReadPath = Application.streamingAssetsPath;
+
+    /// <summary>
+    /// 可读写目录
+    /// </summary>
+    public static readonly string ReadWriteOutPath = Application.persistentDataPath;
+
+    /// <summary>
     /// bundle资源路径
     /// </summary>
     public static string BundleResourcePath
