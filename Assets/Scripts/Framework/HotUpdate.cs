@@ -7,6 +7,8 @@ using UnityEngine.Networking;
 
 public class HotUpdate : MonoBehaviour
 {
+    byte[] m_ReadPathFileListData;
+    byte[] m_ServerFileListData;
     private const int MaxRetryCount = 3;
 
     internal class DownFileInfo
@@ -62,7 +64,7 @@ public class HotUpdate : MonoBehaviour
                 info.fileData = webRequest.downloadHandler;
                 onComplete?.Invoke(info);
                 webRequest.Dispose();
-                yield break; // 下载成功，退出循环
+                yield break; // 下载成功，退出协程
             }
         }
     }
@@ -97,5 +99,98 @@ public class HotUpdate : MonoBehaviour
             downFileInfos.Add(fileInfo);
         }
         return downFileInfos;
+    }
+
+    private void Start()
+    {
+        if (IsFirstInstall())
+        {
+            ReleaseResources();
+        }
+        else
+        {
+            CheckUpdate();
+        }
+    }
+
+    private bool IsFirstInstall()
+    {
+        //判断只读目录是否存在版本文件
+        bool isExistsReadPath = FileUtil.IsExists(Path.Combine(PathUtil.ReadPath, AppConst.FileListName));
+
+        //判断可读写目录是否存在版本文件
+        bool isExistsReadWritePath = FileUtil.IsExists(Path.Combine(PathUtil.ReadWritePath, AppConst.FileListName));
+
+        return isExistsReadPath && !isExistsReadWritePath;
+    }
+
+    private void ReleaseResources()
+    {
+        string url = Path.Combine(PathUtil.ReadPath, AppConst.FileListName);
+        DownFileInfo info = new() { url = url };
+        StartCoroutine(DownloadFile(info, OnDownLoadReadPathFileListComplete));
+    }
+
+    private void OnDownLoadReadPathFileListComplete(DownFileInfo file)
+    {
+        m_ReadPathFileListData = file.fileData.data;
+        List<DownFileInfo> fileInfos = GetFileList(file.fileData.text, PathUtil.ReadPath);
+        StartCoroutine(DownloadFile(fileInfos, OnReleaseFileComplete, OnReleaseAllFileComplete));
+    }
+
+    private void OnReleaseFileComplete(DownFileInfo info)
+    {
+        string writePath = Path.Combine(PathUtil.ReadWritePath, info.fileName);
+        FileUtil.WriteFile(writePath, info.fileData.data);
+    }
+
+    private void OnReleaseAllFileComplete()
+    {
+        FileUtil.WriteFile(Path.Combine(PathUtil.ReadWritePath, AppConst.FileListName), m_ReadPathFileListData);
+        CheckUpdate();
+    }
+
+    private void CheckUpdate()
+    {
+        string url = Path.Combine(AppConst.ResourcesUrl, AppConst.FileListName);
+        DownFileInfo info = new() { url = url };
+        StartCoroutine(DownloadFile(info, OnDownLoadServerFileListComplete));
+    }
+
+    private void OnDownLoadServerFileListComplete(DownFileInfo file)
+    {
+        m_ServerFileListData = file.fileData.data;
+        List<DownFileInfo> fileInfos = GetFileList(file.fileData.text, AppConst.ResourcesUrl);
+        List<DownFileInfo> downListFiles = new();
+
+        for (int i = 0; i < fileInfos.Count; i++)
+        {
+            string localFile = Path.Combine(PathUtil.ReadWritePath, fileInfos[i].fileName);
+            if (!FileUtil.IsExists(localFile))
+            {
+                downListFiles.Add(fileInfos[i]);
+            }
+        }
+        if (downListFiles.Count > 0)
+            StartCoroutine(DownloadFile(fileInfos, OnUpdateFileComplete, OnUpdateAllFileComplete));
+        else
+            EnterGame();
+    }
+
+    private void OnUpdateFileComplete(DownFileInfo info)
+    {
+        string writePath = Path.Combine(PathUtil.ReadWritePath, info.fileName);
+        FileUtil.WriteFile(writePath, info.fileData.data);
+    }
+
+    private void OnUpdateAllFileComplete()
+    {
+        FileUtil.WriteFile(Path.Combine(PathUtil.ReadWritePath, AppConst.FileListName), m_ServerFileListData);
+        EnterGame();
+    }
+
+    private void EnterGame()
+    {
+        throw new NotImplementedException();
     }
 }

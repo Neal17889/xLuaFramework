@@ -27,7 +27,7 @@ public class PathUtil
     /// <summary>
     /// 可读写目录
     /// </summary>
-    public static readonly string ReadWriteOutPath = Application.persistentDataPath;
+    public static readonly string ReadWritePath = Application.persistentDataPath;
 
     /// <summary>
     /// bundle资源路径

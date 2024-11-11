@@ -13,7 +13,7 @@ public class FileUtil
     /// </summary>
     /// <param name="path"></param>
     /// <returns></returns>
-    public static bool isExists(string path)
+    public static bool IsExists(string path)
     {
         FileInfo fileInfo = new FileInfo(path);
         return fileInfo.Exists;
