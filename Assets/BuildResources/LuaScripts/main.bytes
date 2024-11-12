@@ -1,0 +1,5 @@
+Main = function()
+	print("hello main")
+end
+
+--Main()

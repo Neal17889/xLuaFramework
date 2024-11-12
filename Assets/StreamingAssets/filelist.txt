@@ -1,0 +1,7 @@
+Assets/BuildResources/LuaScripts/main.bytes|luascripts/main.bytes.ab
+Assets/BuildResources/UI/Prefabs/UILogin.prefab|ui/prefabs/uilogin.prefab.ab|Assets/BuildResources/UI/Res/common_bg_02.png
+Assets/BuildResources/UI/Res/common_bg_01.png|ui/res/common_bg_01.png.ab
+Assets/BuildResources/UI/Res/common_bg_02.png|ui/res/common_bg_02.png.ab
+Assets/BuildResources/UI/Res/common_bg_03.png|ui/res/common_bg_03.png.ab
+Assets/BuildResources/UI/Res/common_bg_04.png|ui/res/common_bg_04.png.ab
+Assets/BuildResources/UI/Res/common_bg_05.png|ui/res/common_bg_05.png.ab
