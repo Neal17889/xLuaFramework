@@ -4,6 +4,7 @@ end
 
 OnOpen = function()
 	print("lua OnOpen")
+	Manager.Scene:LoadScene("Test01", "scene.Scene01")
 end
 
 Update = function()

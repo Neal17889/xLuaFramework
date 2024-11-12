@@ -120,6 +120,11 @@ public class ResourceManager : MonoBehaviour
         LoadAsset(assetName, action);
     }
 
+    public void LoadPrefab(string assetName, Action<UnityEngine.Object> action = null)
+    {
+        LoadAsset(assetName, action);
+    }
+
     //Ð¶ÔØÔÝÊ±²»×ö
 
 

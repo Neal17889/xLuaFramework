@@ -1,17 +1,31 @@
 Manager = CS.Manager
+PathUtil = CS.PathUtil
+Vector3 = CS.UnityEngine.Vector3
+Input = CS.UnityEngine.Input
+KeyCode = CS.UnityEngine.KeyCode
+Time = CS.UnityEngine.Time;
 
-local group = 
+
+local ui_group = 
 {
 	"Main",
 	"UI",
 	"Box",
 }
 
-Manager.UI:SetUIGroups(group)
+local entity_group = 
+{
+	"Player",
+	"Monster",
+	"Effect",
+}
+
+Manager.UI:SetUIGroups(ui_group)
+Manager.Entity:SetEntityGroups(entity_group)
 Main = function()
 	print("hello main")
 	Manager.UI:OpenUI("UILogin", "UI", "ui.UILogin")
-	Manager.UI:OpenUI("UIRegister", "Main", "ui.UILogin")
+	--Manager.UI:OpenUI("UIRegister", "Main", "ui.UILogin")
 end
 
 --Main()
