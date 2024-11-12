@@ -1,0 +1,15 @@
+OnInit = function()
+	print("lua OnInit")
+end
+
+OnOpen = function()
+	print("lua OnOpen")
+end
+
+Update = function()
+	print("lua Update")
+end
+
+OnClose = function()
+	print("lua OnClose");
+end
