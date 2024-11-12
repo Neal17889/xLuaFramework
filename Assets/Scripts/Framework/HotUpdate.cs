@@ -32,6 +32,7 @@ public class HotUpdate : MonoBehaviour
         while (retryCount < MaxRetryCount)
         {
             webRequest = UnityWebRequest.Get(info.url);
+            webRequest.useHttpContinue = true;
             yield return webRequest.SendWebRequest();
 
             if (webRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -85,6 +86,12 @@ public class HotUpdate : MonoBehaviour
         DownLoadAllComplete?.Invoke();
     }
 
+    /// <summary>
+    /// 获得需要下载的文件的列表
+    /// </summary>
+    /// <param name="fileData">filelist.txt文件的字符串</param>
+    /// <param name="path">需要下载的文件的url地址</param>
+    /// <returns></returns>
     private List<DownFileInfo> GetFileList(string fileData, string path)
     {
         string content = fileData.Trim().Replace("\r", "");
@@ -140,6 +147,7 @@ public class HotUpdate : MonoBehaviour
 
     private void OnReleaseFileComplete(DownFileInfo info)
     {
+        Debug.LogFormat("OnReleaseFileComplete:{0}", info.url);
         string writePath = Path.Combine(PathUtil.ReadWritePath, info.fileName);
         FileUtil.WriteFile(writePath, info.fileData.data);
     }
@@ -179,6 +187,7 @@ public class HotUpdate : MonoBehaviour
 
     private void OnUpdateFileComplete(DownFileInfo info)
     {
+        Debug.LogFormat("OnUpdateFileComplete:{0}", info.url);
         string writePath = Path.Combine(PathUtil.ReadWritePath, info.fileName);
         FileUtil.WriteFile(writePath, info.fileData.data);
     }
@@ -191,6 +200,15 @@ public class HotUpdate : MonoBehaviour
 
     private void EnterGame()
     {
-        throw new NotImplementedException();
+        Manager.Resource.ParseVersionFile();
+        Manager.Resource.LoadUI("UILogin", OnComplete);
+    }
+
+    private void OnComplete(UnityEngine.Object @object)
+    {
+        GameObject go = Instantiate(@object) as GameObject;
+        go.transform.SetParent(this.transform);
+        go.SetActive(true);
+        go.transform.localPosition = Vector3.zero;
     }
 }

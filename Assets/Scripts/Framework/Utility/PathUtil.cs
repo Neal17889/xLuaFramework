@@ -37,8 +37,8 @@ public class PathUtil
         get 
         {
             if (AppConst.GameMode == GameMode.UpdateMode)
-                return Application.persistentDataPath; //这个目录是可读写的,***iOS不能用这个目录***
-            return Application.streamingAssetsPath; //这个目录是只读的
+                return ReadWritePath; //这个目录是可读写的,***iOS不能用这个目录***
+            return ReadPath; //这个目录是只读的
         }
     }
 

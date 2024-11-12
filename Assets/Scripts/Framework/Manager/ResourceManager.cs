@@ -17,7 +17,7 @@ public class ResourceManager : MonoBehaviour
     /// <summary>
     /// 解析版本文件
     /// </summary>
-    private void ParseVersionFile()
+    public void ParseVersionFile()
     {
         //版本文件的路径
         string url = Path.Combine(PathUtil.BundleResourcePath, AppConst.FileListName);
@@ -80,7 +80,8 @@ public class ResourceManager : MonoBehaviour
     private void LoadAsset(string assetName, Action<UnityEngine.Object> action)
     {
 #if UNITY_EDITOR
-        EditorLoadAsset(assetName, action);
+        if (AppConst.GameMode == GameMode.EditorMode)
+            EditorLoadAsset(assetName, action);
 #endif
         if (AppConst.GameMode != GameMode.EditorMode)
             StartCoroutine(LoadBundleAsync(assetName, action));
@@ -111,17 +112,9 @@ public class ResourceManager : MonoBehaviour
         LoadAsset(PathUtil.GetScenePath(assetName), action);
     }
 
-    void Start()
-    {
-        ParseVersionFile();
-        LoadUI("UILogin", OnComplete);
-    }
+    //卸载暂时不做
 
-    private void OnComplete(UnityEngine.Object @object)
-    {
-        GameObject go = Instantiate(@object) as GameObject;
-        go.transform.SetParent(this.transform);
-        go.SetActive(true);
-        go.transform.localPosition = Vector3.zero;
-    }
+    
+
+    
 }
