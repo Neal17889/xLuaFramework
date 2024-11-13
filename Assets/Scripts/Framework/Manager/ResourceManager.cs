@@ -62,6 +62,11 @@ public class ResourceManager : MonoBehaviour
 
         AssetBundleCreateRequest request = AssetBundle.LoadFromFileAsync(bundlePath);
         yield return request;
+        if (assetName.EndsWith(".unity"))
+        {
+            action?.Invoke(null);
+            yield break;
+        }
 
         AssetBundleRequest assetBundleRequest = request.assetBundle.LoadAssetAsync(assetName);
         yield return assetBundleRequest;
