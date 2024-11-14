@@ -4,8 +4,13 @@ Vector3 = CS.UnityEngine.Vector3
 Input = CS.UnityEngine.Input
 KeyCode = CS.UnityEngine.KeyCode
 Time = CS.UnityEngine.Time;
+AppConst = CS.AppConst
 Log = require("log")
 Json = require('rapidjson')
+require('class')
+base_msg = require('message.base_msg')
+msg_mgr = require('message.msg_mgr')
+
 local ui_group = 
 {
 	"Main",
@@ -23,8 +28,11 @@ local entity_group =
 Manager.UI:SetUIGroups(ui_group)
 Manager.Entity:SetEntityGroups(entity_group)
 Main = function()
+	msg_mgr.init()
+	Manager.Net:Init()
+	Manager.Net:ConnectedServer("127.0.0.1", 8000)
 	--print("hello main")
-	--Manager.UI:OpenUI("UILogin", "UI", "ui.UILogin")
+	Manager.UI:OpenUI("UILogin", "UI", "ui.UILogin")
 	--Manager.UI:OpenUI("UIRegister", "Main", "ui.UILogin")
 end
 
