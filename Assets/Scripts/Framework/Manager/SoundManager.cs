@@ -64,7 +64,7 @@ public class SoundManager : MonoBehaviour
         m_MusicAudio.Pause();
     }
 
-    public void OnUnPauseMusic()
+    public void UnPauseMusic()
     {
         m_MusicAudio.UnPause();
     }
