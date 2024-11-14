@@ -23,9 +23,16 @@ local entity_group =
 Manager.UI:SetUIGroups(ui_group)
 Manager.Entity:SetEntityGroups(entity_group)
 Main = function()
-	print("hello main")
-	Manager.UI:OpenUI("UILogin", "UI", "ui.UILogin")
+	--print("hello main")
+	--Manager.UI:OpenUI("UILogin", "UI", "ui.UILogin")
 	--Manager.UI:OpenUI("UIRegister", "Main", "ui.UILogin")
+	local rapidjson = require('rapidjson')
+	local t = rapidjson.decode('{"a":123}')
+	print(t.a)
+	t.a = 456
+	local s = rapidjson.encode(t)
+	print('json', s)
+
 end
 
 --Main()
