@@ -5,11 +5,13 @@ using UnityEngine;
 public class GameStart : MonoBehaviour
 {
     public GameMode GameMode;
+    public bool OpenLog;
     private void Start()
     {
         Manager.Event.Subscribe(10000, OnLuaInit);
 
         AppConst.GameMode = this.GameMode;
+        AppConst.OpenLog = this.OpenLog;
         DontDestroyOnLoad(this);
 
         Manager.Resource.ParseVersionFile();//不走编辑器模式才需要

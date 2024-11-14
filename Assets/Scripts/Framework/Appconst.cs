@@ -15,6 +15,7 @@ public class AppConst
     public const string BundleExtension = ".ab";
     public const string FileListName = "filelist.txt";
     public static GameMode GameMode = GameMode.EditorMode;
+    public static bool OpenLog = true;
 
     /// <summary>
     /// 热更资源地址

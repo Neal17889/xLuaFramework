@@ -4,8 +4,8 @@ Vector3 = CS.UnityEngine.Vector3
 Input = CS.UnityEngine.Input
 KeyCode = CS.UnityEngine.KeyCode
 Time = CS.UnityEngine.Time;
-
-
+Log = require("log")
+Json = require('rapidjson')
 local ui_group = 
 {
 	"Main",
@@ -26,13 +26,6 @@ Main = function()
 	--print("hello main")
 	--Manager.UI:OpenUI("UILogin", "UI", "ui.UILogin")
 	--Manager.UI:OpenUI("UIRegister", "Main", "ui.UILogin")
-	local rapidjson = require('rapidjson')
-	local t = rapidjson.decode('{"a":123}')
-	print(t.a)
-	t.a = 456
-	local s = rapidjson.encode(t)
-	print('json', s)
-
 end
 
 --Main()
