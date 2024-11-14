@@ -51,7 +51,7 @@ namespace XLua.CSObjectWrap
 				{
 					float _seconds = (float)LuaAPI.lua_tonumber(L, 2);
 					
-					var gen_ret = new UnityEngine.WaitForSeconds(_seconds);
+					UnityEngine.WaitForSeconds gen_ret = new UnityEngine.WaitForSeconds(_seconds);
 					translator.Push(L, gen_ret);
                     
 					return 1;

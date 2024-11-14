@@ -54,7 +54,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					var gen_ret = new UnityEngine.TextAsset();
+					UnityEngine.TextAsset gen_ret = new UnityEngine.TextAsset();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -63,7 +63,7 @@ namespace XLua.CSObjectWrap
 				{
 					string _text = LuaAPI.lua_tostring(L, 2);
 					
-					var gen_ret = new UnityEngine.TextAsset(_text);
+					UnityEngine.TextAsset gen_ret = new UnityEngine.TextAsset(_text);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -98,7 +98,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        var gen_ret = gen_to_be_invoked.ToString(  );
+                        string gen_ret = gen_to_be_invoked.ToString(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     

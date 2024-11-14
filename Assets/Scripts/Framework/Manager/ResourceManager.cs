@@ -14,6 +14,9 @@ public class ResourceManager : MonoBehaviour
     }
     //存放bundle信息的集合
     private Dictionary<string, BundleInfo> m_BundleInfos = new Dictionary<string, BundleInfo>();
+    //存放Bundle资源的集合
+    private Dictionary<string, AssetBundle> m_AssetBundles = new Dictionary<string, AssetBundle>();
+
     /// <summary>
     /// 解析版本文件
     /// </summary>
@@ -52,26 +55,44 @@ public class ResourceManager : MonoBehaviour
         string bundleName = m_BundleInfos[assetName].BundleName;
         string bundlePath = Path.Combine(PathUtil.BundleResourcePath, bundleName);
         List<string> dependencies = m_BundleInfos[assetName].Dependencie;
-        if (dependencies != null && dependencies.Count > 0)
-        {
-            for (int i = 0;i < dependencies.Count;i++)
-            {
-                yield return LoadBundleAsync(dependencies[i]);
-            }            
-        }
 
-        AssetBundleCreateRequest request = AssetBundle.LoadFromFileAsync(bundlePath);
-        yield return request;
+        AssetBundle bundle = GetBundle(bundleName);
+        if (bundle == null)
+        {
+            if (dependencies != null && dependencies.Count > 0)
+            {
+                for (int i = 0; i < dependencies.Count; i++)
+                {
+                    yield return LoadBundleAsync(dependencies[i]);
+                }
+            }
+
+            AssetBundleCreateRequest request = AssetBundle.LoadFromFileAsync(bundlePath);
+            yield return request;
+            bundle = request.assetBundle;
+            m_AssetBundles.Add(bundleName, bundle);
+        }
+        
         if (assetName.EndsWith(".unity"))
         {
             action?.Invoke(null);
             yield break;
         }
 
-        AssetBundleRequest assetBundleRequest = request.assetBundle.LoadAssetAsync(assetName);
+        AssetBundleRequest assetBundleRequest = bundle.LoadAssetAsync(assetName);
         yield return assetBundleRequest;
         Debug.LogFormat("LoadBundleAsync:{0}", assetName);
         action?.Invoke(assetBundleRequest?.asset);
+    }
+
+    AssetBundle GetBundle(string name)
+    {
+        AssetBundle bundle = null;
+        if (m_AssetBundles.TryGetValue(name, out bundle))
+        {
+            return bundle;
+        }
+        return null;
     }
 
 #if UNITY_EDITOR

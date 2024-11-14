@@ -118,7 +118,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					var gen_ret = new UnityEngine.Renderer();
+					UnityEngine.Renderer gen_ret = new UnityEngine.Renderer();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -207,7 +207,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        var gen_ret = gen_to_be_invoked.HasPropertyBlock(  );
+                        bool gen_ret = gen_to_be_invoked.HasPropertyBlock(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

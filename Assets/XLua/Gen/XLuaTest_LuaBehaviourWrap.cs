@@ -54,7 +54,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					var gen_ret = new XLuaTest.LuaBehaviour();
+					XLuaTest.LuaBehaviour gen_ret = new XLuaTest.LuaBehaviour();
 					translator.Push(L, gen_ret);
                     
 					return 1;

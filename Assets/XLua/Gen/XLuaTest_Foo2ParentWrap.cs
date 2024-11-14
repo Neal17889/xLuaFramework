@@ -50,7 +50,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					var gen_ret = new XLuaTest.Foo2Parent();
+					XLuaTest.Foo2Parent gen_ret = new XLuaTest.Foo2Parent();
 					translator.Push(L, gen_ret);
                     
 					return 1;

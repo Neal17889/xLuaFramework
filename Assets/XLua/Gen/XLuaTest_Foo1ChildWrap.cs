@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					var gen_ret = new XLuaTest.Foo1Child();
+					XLuaTest.Foo1Child gen_ret = new XLuaTest.Foo1Child();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -87,7 +87,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        var gen_ret = gen_to_be_invoked.Extension1(  );
+                        XLuaTest.Foo1Parent gen_ret = gen_to_be_invoked.Extension1(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -118,7 +118,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.GameObject _b = (UnityEngine.GameObject)translator.GetObject(L, 2, typeof(UnityEngine.GameObject));
                     
-                        var gen_ret = gen_to_be_invoked.Extension2( _b );
+                        XLuaTest.Foo1Parent gen_ret = gen_to_be_invoked.Extension2( _b );
                         translator.Push(L, gen_ret);
                     
                     

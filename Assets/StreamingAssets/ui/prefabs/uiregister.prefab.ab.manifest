@@ -1,0 +1,47 @@
+ManifestFileVersion: 0
+CRC: 1092513483
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 34f184dfd796a0ec9ccf7e946941c10b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4420c58d86142c80a10ecfea9a08518f
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 34f184dfd796a0ec9ccf7e946941c10b
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.FontData
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+Assets:
+- Assets/BuildResources/UI/Prefabs/UIRegister.prefab
+Dependencies:
+- D:/Program Files/Unity/Projects/xLua-Framework/Assets/StreamingAssets/ui/res/common_bg_04.png.ab

@@ -65,7 +65,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					var gen_ret = new XLuaTest.NoGc();
+					XLuaTest.NoGc gen_ret = new XLuaTest.NoGc();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -101,7 +101,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _p = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        var gen_ret = gen_to_be_invoked.FloatParamMethod( _p );
+                        float gen_ret = gen_to_be_invoked.FloatParamMethod( _p );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -130,7 +130,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _p;translator.Get(L, 2, out _p);
                     
-                        var gen_ret = gen_to_be_invoked.Vector3ParamMethod( _p );
+                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.Vector3ParamMethod( _p );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -159,7 +159,7 @@ namespace XLua.CSObjectWrap
                 {
                     XLuaTest.MyStruct _p;translator.Get(L, 2, out _p);
                     
-                        var gen_ret = gen_to_be_invoked.StructParamMethod( _p );
+                        XLuaTest.MyStruct gen_ret = gen_to_be_invoked.StructParamMethod( _p );
                         translator.PushXLuaTestMyStruct(L, gen_ret);
                     
                     
@@ -188,7 +188,7 @@ namespace XLua.CSObjectWrap
                 {
                     XLuaTest.MyEnum _p;translator.Get(L, 2, out _p);
                     
-                        var gen_ret = gen_to_be_invoked.EnumParamMethod( _p );
+                        XLuaTest.MyEnum gen_ret = gen_to_be_invoked.EnumParamMethod( _p );
                         translator.PushXLuaTestMyEnum(L, gen_ret);
                     
                     
@@ -217,7 +217,7 @@ namespace XLua.CSObjectWrap
                 {
                     decimal _p;translator.Get(L, 2, out _p);
                     
-                        var gen_ret = gen_to_be_invoked.DecimalParamMethod( _p );
+                        decimal gen_ret = gen_to_be_invoked.DecimalParamMethod( _p );
                         translator.PushDecimal(L, gen_ret);
                     
                     

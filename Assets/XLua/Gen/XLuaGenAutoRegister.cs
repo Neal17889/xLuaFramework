@@ -25,9 +25,6 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(object), SystemObjectWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(UnityEngine.Object), UnityEngineObjectWrap.__Register);
-        
-        
             translator.DelayWrapLoader(typeof(UnityEngine.Vector2), UnityEngineVector2Wrap.__Register);
         
         

@@ -57,7 +57,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					var gen_ret = new Tutorial.BaseClass();
+					Tutorial.BaseClass gen_ret = new Tutorial.BaseClass();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -142,7 +142,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        var gen_ret = gen_to_be_invoked.GetSomeBaseData(  );
+                        int gen_ret = gen_to_be_invoked.GetSomeBaseData(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     

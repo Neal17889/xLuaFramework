@@ -109,7 +109,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					var gen_ret = new UnityEngine.ParticleSystem();
+					UnityEngine.ParticleSystem gen_ret = new UnityEngine.ParticleSystem();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -235,7 +235,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.ParticleSystem.Particle[] _particles = (UnityEngine.ParticleSystem.Particle[])translator.GetObject(L, 2, typeof(UnityEngine.ParticleSystem.Particle[]));
                     
-                        var gen_ret = gen_to_be_invoked.GetParticles( _particles );
+                        int gen_ret = gen_to_be_invoked.GetParticles( _particles );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -246,7 +246,7 @@ namespace XLua.CSObjectWrap
                 {
                     Unity.Collections.NativeArray<UnityEngine.ParticleSystem.Particle> _particles;translator.Get(L, 2, out _particles);
                     
-                        var gen_ret = gen_to_be_invoked.GetParticles( _particles );
+                        int gen_ret = gen_to_be_invoked.GetParticles( _particles );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -258,7 +258,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.ParticleSystem.Particle[] _particles = (UnityEngine.ParticleSystem.Particle[])translator.GetObject(L, 2, typeof(UnityEngine.ParticleSystem.Particle[]));
                     int _size = LuaAPI.xlua_tointeger(L, 3);
                     
-                        var gen_ret = gen_to_be_invoked.GetParticles( _particles, _size );
+                        int gen_ret = gen_to_be_invoked.GetParticles( _particles, _size );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -270,7 +270,7 @@ namespace XLua.CSObjectWrap
                     Unity.Collections.NativeArray<UnityEngine.ParticleSystem.Particle> _particles;translator.Get(L, 2, out _particles);
                     int _size = LuaAPI.xlua_tointeger(L, 3);
                     
-                        var gen_ret = gen_to_be_invoked.GetParticles( _particles, _size );
+                        int gen_ret = gen_to_be_invoked.GetParticles( _particles, _size );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -283,7 +283,7 @@ namespace XLua.CSObjectWrap
                     int _size = LuaAPI.xlua_tointeger(L, 3);
                     int _offset = LuaAPI.xlua_tointeger(L, 4);
                     
-                        var gen_ret = gen_to_be_invoked.GetParticles( _particles, _size, _offset );
+                        int gen_ret = gen_to_be_invoked.GetParticles( _particles, _size, _offset );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -296,7 +296,7 @@ namespace XLua.CSObjectWrap
                     int _size = LuaAPI.xlua_tointeger(L, 3);
                     int _offset = LuaAPI.xlua_tointeger(L, 4);
                     
-                        var gen_ret = gen_to_be_invoked.GetParticles( _particles, _size, _offset );
+                        int gen_ret = gen_to_be_invoked.GetParticles( _particles, _size, _offset );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -357,7 +357,7 @@ namespace XLua.CSObjectWrap
                     System.Collections.Generic.List<UnityEngine.Vector4> _customData = (System.Collections.Generic.List<UnityEngine.Vector4>)translator.GetObject(L, 2, typeof(System.Collections.Generic.List<UnityEngine.Vector4>));
                     UnityEngine.ParticleSystemCustomData _streamIndex;translator.Get(L, 3, out _streamIndex);
                     
-                        var gen_ret = gen_to_be_invoked.GetCustomParticleData( _customData, _streamIndex );
+                        int gen_ret = gen_to_be_invoked.GetCustomParticleData( _customData, _streamIndex );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -385,7 +385,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        var gen_ret = gen_to_be_invoked.GetPlaybackState(  );
+                        UnityEngine.ParticleSystem.PlaybackState gen_ret = gen_to_be_invoked.GetPlaybackState(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -443,7 +443,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        var gen_ret = gen_to_be_invoked.GetTrails(  );
+                        UnityEngine.ParticleSystem.Trails gen_ret = gen_to_be_invoked.GetTrails(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -454,7 +454,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.ParticleSystem.Trails _trailData;translator.Get(L, 2, out _trailData);
                     
-                        var gen_ret = gen_to_be_invoked.GetTrails( ref _trailData );
+                        int gen_ret = gen_to_be_invoked.GetTrails( ref _trailData );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     translator.Push(L, _trailData);
                         translator.Update(L, 2, _trailData);
@@ -760,7 +760,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        var gen_ret = gen_to_be_invoked.IsAlive(  );
+                        bool gen_ret = gen_to_be_invoked.IsAlive(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -771,7 +771,7 @@ namespace XLua.CSObjectWrap
                 {
                     bool _withChildren = LuaAPI.lua_toboolean(L, 2);
                     
-                        var gen_ret = gen_to_be_invoked.IsAlive( _withChildren );
+                        bool gen_ret = gen_to_be_invoked.IsAlive( _withChildren );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

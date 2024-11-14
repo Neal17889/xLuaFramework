@@ -89,7 +89,7 @@ namespace XLua.CSObjectWrap
 					float _b = (float)LuaAPI.lua_tonumber(L, 4);
 					float _a = (float)LuaAPI.lua_tonumber(L, 5);
 					
-					var gen_ret = new UnityEngine.Color(_r, _g, _b, _a);
+					UnityEngine.Color gen_ret = new UnityEngine.Color(_r, _g, _b, _a);
 					translator.PushUnityEngineColor(L, gen_ret);
                     
 					return 1;
@@ -100,7 +100,7 @@ namespace XLua.CSObjectWrap
 					float _g = (float)LuaAPI.lua_tonumber(L, 3);
 					float _b = (float)LuaAPI.lua_tonumber(L, 4);
 					
-					var gen_ret = new UnityEngine.Color(_r, _g, _b);
+					UnityEngine.Color gen_ret = new UnityEngine.Color(_r, _g, _b);
 					translator.PushUnityEngineColor(L, gen_ret);
                     
 					return 1;
@@ -346,7 +346,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        var gen_ret = gen_to_be_invoked.ToString(  );
+                        string gen_ret = gen_to_be_invoked.ToString(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -359,7 +359,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _format = LuaAPI.lua_tostring(L, 2);
                     
-                        var gen_ret = gen_to_be_invoked.ToString( _format );
+                        string gen_ret = gen_to_be_invoked.ToString( _format );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -373,7 +373,7 @@ namespace XLua.CSObjectWrap
                     string _format = LuaAPI.lua_tostring(L, 2);
                     System.IFormatProvider _formatProvider = (System.IFormatProvider)translator.GetObject(L, 3, typeof(System.IFormatProvider));
                     
-                        var gen_ret = gen_to_be_invoked.ToString( _format, _formatProvider );
+                        string gen_ret = gen_to_be_invoked.ToString( _format, _formatProvider );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -405,7 +405,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        var gen_ret = gen_to_be_invoked.GetHashCode(  );
+                        int gen_ret = gen_to_be_invoked.GetHashCode(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -438,7 +438,7 @@ namespace XLua.CSObjectWrap
                 {
                     object _other = translator.GetObject(L, 2, typeof(object));
                     
-                        var gen_ret = gen_to_be_invoked.Equals( _other );
+                        bool gen_ret = gen_to_be_invoked.Equals( _other );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -451,7 +451,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Color _other;translator.Get(L, 2, out _other);
                     
-                        var gen_ret = gen_to_be_invoked.Equals( _other );
+                        bool gen_ret = gen_to_be_invoked.Equals( _other );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -484,7 +484,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Color _b;translator.Get(L, 2, out _b);
                     float _t = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        var gen_ret = UnityEngine.Color.Lerp( _a, _b, _t );
+                        UnityEngine.Color gen_ret = UnityEngine.Color.Lerp( _a, _b, _t );
                         translator.PushUnityEngineColor(L, gen_ret);
                     
                     
@@ -513,7 +513,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Color _b;translator.Get(L, 2, out _b);
                     float _t = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        var gen_ret = UnityEngine.Color.LerpUnclamped( _a, _b, _t );
+                        UnityEngine.Color gen_ret = UnityEngine.Color.LerpUnclamped( _a, _b, _t );
                         translator.PushUnityEngineColor(L, gen_ret);
                     
                     
@@ -579,7 +579,7 @@ namespace XLua.CSObjectWrap
                     float _S = (float)LuaAPI.lua_tonumber(L, 2);
                     float _V = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        var gen_ret = UnityEngine.Color.HSVToRGB( _H, _S, _V );
+                        UnityEngine.Color gen_ret = UnityEngine.Color.HSVToRGB( _H, _S, _V );
                         translator.PushUnityEngineColor(L, gen_ret);
                     
                     
@@ -593,7 +593,7 @@ namespace XLua.CSObjectWrap
                     float _V = (float)LuaAPI.lua_tonumber(L, 3);
                     bool _hdr = LuaAPI.lua_toboolean(L, 4);
                     
-                        var gen_ret = UnityEngine.Color.HSVToRGB( _H, _S, _V, _hdr );
+                        UnityEngine.Color gen_ret = UnityEngine.Color.HSVToRGB( _H, _S, _V, _hdr );
                         translator.PushUnityEngineColor(L, gen_ret);
                     
                     

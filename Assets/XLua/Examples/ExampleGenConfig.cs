@@ -20,7 +20,7 @@ public static class ExampleGenConfig
     [LuaCallCSharp]
     public static List<Type> LuaCallCSharp = new List<Type>() {
                 typeof(System.Object),
-                typeof(UnityEngine.Object),
+               // typeof(UnityEngine.Object),
                 typeof(Vector2),
                 typeof(Vector3),
                 typeof(Vector4),
@@ -90,5 +90,20 @@ public static class ExampleGenConfig
                 new List<string>(){"System.IO.DirectoryInfo", "CreateSubdirectory", "System.String", "System.Security.AccessControl.DirectorySecurity"},
                 new List<string>(){"System.IO.DirectoryInfo", "Create", "System.Security.AccessControl.DirectorySecurity"},
                 new List<string>(){"UnityEngine.MonoBehaviour", "runInEditMode"},
+
+                new List<string>(){ "UnityEngine.Transform", "TransformDirections", "System.ReadOnlySpan`1[UnityEngine.Vector3]", "System.Span`1[UnityEngine.Vector3]" },
+new List<string>(){ "UnityEngine.Transform", "TransformDirections", "System.Span`1[UnityEngine.Vector3]" },
+new List<string>(){ "UnityEngine.Transform", "InverseTransformDirections", "System.ReadOnlySpan`1[UnityEngine.Vector3]", "System.Span`1[UnityEngine.Vector3]" },
+new List<string>(){ "UnityEngine.Transform", "InverseTransformDirections", "System.Span`1[UnityEngine.Vector3]" },
+new List<string>(){ "UnityEngine.Transform", "TransformVectors", "System.ReadOnlySpan`1[UnityEngine.Vector3]", "System.Span`1[UnityEngine.Vector3]" },
+new List<string>(){ "UnityEngine.Transform", "TransformVectors", "System.Span`1[UnityEngine.Vector3]" },
+new List<string>(){ "UnityEngine.Transform", "InverseTransformVectors", "System.ReadOnlySpan`1[UnityEngine.Vector3]", "System.Span`1[UnityEngine.Vector3]" },
+new List<string>(){ "UnityEngine.Transform", "InverseTransformVectors", "System.Span`1[UnityEngine.Vector3]" },
+new List<string>(){ "UnityEngine.Transform", "TransformPoints", "System.ReadOnlySpan`1[UnityEngine.Vector3]", "System.Span`1[UnityEngine.Vector3]" },
+new List<string>(){ "UnityEngine.Transform", "TransformPoints", "System.Span`1[UnityEngine.Vector3]" },
+new List<string>(){ "UnityEngine.Transform", "InverseTransformPoints", "System.ReadOnlySpan`1[UnityEngine.Vector3]", "System.Span`1[UnityEngine.Vector3]" },
+new List<string>(){ "UnityEngine.Transform", "InverseTransformPoints", "System.Span`1[UnityEngine.Vector3]" },
+new List<string>(){ "UnityEngine.GameObject", "SetGameObjectsActive", "System.ReadOnlySpan`1[System.Int32]", "System.Boolean" },
+new List<string>(){ "UnityEngine.Resources", "InstanceIDsToValidArray", "System.ReadOnlySpan`1[System.Int32]", "System.Span`1[System.Boolean]" }
             };
 }

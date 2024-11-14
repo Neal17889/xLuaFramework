@@ -56,7 +56,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					var gen_ret = new object();
+					object gen_ret = new object();
 					translator.PushAny(L, gen_ret);
                     
 					return 1;
@@ -92,7 +92,7 @@ namespace XLua.CSObjectWrap
                 {
                     object _obj = translator.GetObject(L, 2, typeof(object));
                     
-                        var gen_ret = gen_to_be_invoked.Equals( _obj );
+                        bool gen_ret = gen_to_be_invoked.Equals( _obj );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -120,7 +120,7 @@ namespace XLua.CSObjectWrap
                     object _objA = translator.GetObject(L, 1, typeof(object));
                     object _objB = translator.GetObject(L, 2, typeof(object));
                     
-                        var gen_ret = object.Equals( _objA, _objB );
+                        bool gen_ret = object.Equals( _objA, _objB );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -148,7 +148,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        var gen_ret = gen_to_be_invoked.GetHashCode(  );
+                        int gen_ret = gen_to_be_invoked.GetHashCode(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -176,7 +176,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        var gen_ret = gen_to_be_invoked.GetType(  );
+                        System.Type gen_ret = gen_to_be_invoked.GetType(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -204,7 +204,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        var gen_ret = gen_to_be_invoked.ToString(  );
+                        string gen_ret = gen_to_be_invoked.ToString(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -232,7 +232,7 @@ namespace XLua.CSObjectWrap
                     object _objA = translator.GetObject(L, 1, typeof(object));
                     object _objB = translator.GetObject(L, 2, typeof(object));
                     
-                        var gen_ret = object.ReferenceEquals( _objA, _objB );
+                        bool gen_ret = object.ReferenceEquals( _objA, _objB );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

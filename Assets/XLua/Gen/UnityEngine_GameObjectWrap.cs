@@ -87,7 +87,7 @@ namespace XLua.CSObjectWrap
 				{
 					string _name = LuaAPI.lua_tostring(L, 2);
 					
-					var gen_ret = new UnityEngine.GameObject(_name);
+					UnityEngine.GameObject gen_ret = new UnityEngine.GameObject(_name);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -95,7 +95,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					var gen_ret = new UnityEngine.GameObject();
+					UnityEngine.GameObject gen_ret = new UnityEngine.GameObject();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -105,7 +105,7 @@ namespace XLua.CSObjectWrap
 					string _name = LuaAPI.lua_tostring(L, 2);
 					System.Type[] _components = translator.GetParams<System.Type>(L, 3);
 					
-					var gen_ret = new UnityEngine.GameObject(_name, _components);
+					UnityEngine.GameObject gen_ret = new UnityEngine.GameObject(_name, _components);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -139,7 +139,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.PrimitiveType _type;translator.Get(L, 1, out _type);
                     
-                        var gen_ret = UnityEngine.GameObject.CreatePrimitive( _type );
+                        UnityEngine.GameObject gen_ret = UnityEngine.GameObject.CreatePrimitive( _type );
                         translator.Push(L, gen_ret);
                     
                     
@@ -170,7 +170,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     
-                        var gen_ret = gen_to_be_invoked.GetComponent( _type );
+                        UnityEngine.Component gen_ret = gen_to_be_invoked.GetComponent( _type );
                         translator.Push(L, gen_ret);
                     
                     
@@ -181,7 +181,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _type = LuaAPI.lua_tostring(L, 2);
                     
-                        var gen_ret = gen_to_be_invoked.GetComponent( _type );
+                        UnityEngine.Component gen_ret = gen_to_be_invoked.GetComponent( _type );
                         translator.Push(L, gen_ret);
                     
                     
@@ -214,7 +214,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     
-                        var gen_ret = gen_to_be_invoked.GetComponentInChildren( _type );
+                        UnityEngine.Component gen_ret = gen_to_be_invoked.GetComponentInChildren( _type );
                         translator.Push(L, gen_ret);
                     
                     
@@ -226,7 +226,7 @@ namespace XLua.CSObjectWrap
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     bool _includeInactive = LuaAPI.lua_toboolean(L, 3);
                     
-                        var gen_ret = gen_to_be_invoked.GetComponentInChildren( _type, _includeInactive );
+                        UnityEngine.Component gen_ret = gen_to_be_invoked.GetComponentInChildren( _type, _includeInactive );
                         translator.Push(L, gen_ret);
                     
                     
@@ -259,7 +259,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     
-                        var gen_ret = gen_to_be_invoked.GetComponentInParent( _type );
+                        UnityEngine.Component gen_ret = gen_to_be_invoked.GetComponentInParent( _type );
                         translator.Push(L, gen_ret);
                     
                     
@@ -271,7 +271,7 @@ namespace XLua.CSObjectWrap
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     bool _includeInactive = LuaAPI.lua_toboolean(L, 3);
                     
-                        var gen_ret = gen_to_be_invoked.GetComponentInParent( _type, _includeInactive );
+                        UnityEngine.Component gen_ret = gen_to_be_invoked.GetComponentInParent( _type, _includeInactive );
                         translator.Push(L, gen_ret);
                     
                     
@@ -304,7 +304,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     
-                        var gen_ret = gen_to_be_invoked.GetComponents( _type );
+                        UnityEngine.Component[] gen_ret = gen_to_be_invoked.GetComponents( _type );
                         translator.Push(L, gen_ret);
                     
                     
@@ -348,7 +348,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     
-                        var gen_ret = gen_to_be_invoked.GetComponentsInChildren( _type );
+                        UnityEngine.Component[] gen_ret = gen_to_be_invoked.GetComponentsInChildren( _type );
                         translator.Push(L, gen_ret);
                     
                     
@@ -360,7 +360,7 @@ namespace XLua.CSObjectWrap
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     bool _includeInactive = LuaAPI.lua_toboolean(L, 3);
                     
-                        var gen_ret = gen_to_be_invoked.GetComponentsInChildren( _type, _includeInactive );
+                        UnityEngine.Component[] gen_ret = gen_to_be_invoked.GetComponentsInChildren( _type, _includeInactive );
                         translator.Push(L, gen_ret);
                     
                     
@@ -393,7 +393,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     
-                        var gen_ret = gen_to_be_invoked.GetComponentsInParent( _type );
+                        UnityEngine.Component[] gen_ret = gen_to_be_invoked.GetComponentsInParent( _type );
                         translator.Push(L, gen_ret);
                     
                     
@@ -405,7 +405,7 @@ namespace XLua.CSObjectWrap
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     bool _includeInactive = LuaAPI.lua_toboolean(L, 3);
                     
-                        var gen_ret = gen_to_be_invoked.GetComponentsInParent( _type, _includeInactive );
+                        UnityEngine.Component[] gen_ret = gen_to_be_invoked.GetComponentsInParent( _type, _includeInactive );
                         translator.Push(L, gen_ret);
                     
                     
@@ -437,7 +437,7 @@ namespace XLua.CSObjectWrap
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     UnityEngine.Component _component;
                     
-                        var gen_ret = gen_to_be_invoked.TryGetComponent( _type, out _component );
+                        bool gen_ret = gen_to_be_invoked.TryGetComponent( _type, out _component );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _component);
                         
@@ -466,7 +466,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _tag = LuaAPI.lua_tostring(L, 1);
                     
-                        var gen_ret = UnityEngine.GameObject.FindWithTag( _tag );
+                        UnityEngine.GameObject gen_ret = UnityEngine.GameObject.FindWithTag( _tag );
                         translator.Push(L, gen_ret);
                     
                     
@@ -693,7 +693,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Type _componentType = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     
-                        var gen_ret = gen_to_be_invoked.AddComponent( _componentType );
+                        UnityEngine.Component gen_ret = gen_to_be_invoked.AddComponent( _componentType );
                         translator.Push(L, gen_ret);
                     
                     
@@ -721,7 +721,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        var gen_ret = gen_to_be_invoked.GetComponentCount(  );
+                        int gen_ret = gen_to_be_invoked.GetComponentCount(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -750,7 +750,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        var gen_ret = gen_to_be_invoked.GetComponentAtIndex( _index );
+                        UnityEngine.Component gen_ret = gen_to_be_invoked.GetComponentAtIndex( _index );
                         translator.Push(L, gen_ret);
                     
                     
@@ -779,7 +779,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Component _component = (UnityEngine.Component)translator.GetObject(L, 2, typeof(UnityEngine.Component));
                     
-                        var gen_ret = gen_to_be_invoked.GetComponentIndex( _component );
+                        int gen_ret = gen_to_be_invoked.GetComponentIndex( _component );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -836,7 +836,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _tag = LuaAPI.lua_tostring(L, 2);
                     
-                        var gen_ret = gen_to_be_invoked.CompareTag( _tag );
+                        bool gen_ret = gen_to_be_invoked.CompareTag( _tag );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -863,7 +863,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _tag = LuaAPI.lua_tostring(L, 1);
                     
-                        var gen_ret = UnityEngine.GameObject.FindGameObjectWithTag( _tag );
+                        UnityEngine.GameObject gen_ret = UnityEngine.GameObject.FindGameObjectWithTag( _tag );
                         translator.Push(L, gen_ret);
                     
                     
@@ -890,7 +890,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _tag = LuaAPI.lua_tostring(L, 1);
                     
-                        var gen_ret = UnityEngine.GameObject.FindGameObjectsWithTag( _tag );
+                        UnityEngine.GameObject[] gen_ret = UnityEngine.GameObject.FindGameObjectsWithTag( _tag );
                         translator.Push(L, gen_ret);
                     
                     
@@ -917,7 +917,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 1);
                     
-                        var gen_ret = UnityEngine.GameObject.Find( _name );
+                        UnityEngine.GameObject gen_ret = UnityEngine.GameObject.Find( _name );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1018,7 +1018,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _instanceID = LuaAPI.xlua_tointeger(L, 1);
                     
-                        var gen_ret = UnityEngine.GameObject.GetScene( _instanceID );
+                        UnityEngine.SceneManagement.Scene gen_ret = UnityEngine.GameObject.GetScene( _instanceID );
                         translator.Push(L, gen_ret);
                     
                     

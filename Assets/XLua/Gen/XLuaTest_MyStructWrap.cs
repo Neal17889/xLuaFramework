@@ -60,7 +60,7 @@ namespace XLua.CSObjectWrap
 					int _p1 = LuaAPI.xlua_tointeger(L, 2);
 					int _p2 = LuaAPI.xlua_tointeger(L, 3);
 					
-					var gen_ret = new XLuaTest.MyStruct(_p1, _p2);
+					XLuaTest.MyStruct gen_ret = new XLuaTest.MyStruct(_p1, _p2);
 					translator.PushXLuaTestMyStruct(L, gen_ret);
                     
 					return 1;

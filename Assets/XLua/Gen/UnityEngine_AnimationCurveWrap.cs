@@ -70,7 +70,7 @@ namespace XLua.CSObjectWrap
 				{
 					UnityEngine.Keyframe[] _keys = translator.GetParams<UnityEngine.Keyframe>(L, 2);
 					
-					var gen_ret = new UnityEngine.AnimationCurve(_keys);
+					UnityEngine.AnimationCurve gen_ret = new UnityEngine.AnimationCurve(_keys);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -78,7 +78,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					var gen_ret = new UnityEngine.AnimationCurve();
+					UnityEngine.AnimationCurve gen_ret = new UnityEngine.AnimationCurve();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -139,7 +139,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _time = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        var gen_ret = gen_to_be_invoked.Evaluate( _time );
+                        float gen_ret = gen_to_be_invoked.Evaluate( _time );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -171,7 +171,7 @@ namespace XLua.CSObjectWrap
                     float _time = (float)LuaAPI.lua_tonumber(L, 2);
                     float _value = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        var gen_ret = gen_to_be_invoked.AddKey( _time, _value );
+                        int gen_ret = gen_to_be_invoked.AddKey( _time, _value );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -182,7 +182,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Keyframe _key;translator.Get(L, 2, out _key);
                     
-                        var gen_ret = gen_to_be_invoked.AddKey( _key );
+                        int gen_ret = gen_to_be_invoked.AddKey( _key );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -214,7 +214,7 @@ namespace XLua.CSObjectWrap
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     UnityEngine.Keyframe _key;translator.Get(L, 3, out _key);
                     
-                        var gen_ret = gen_to_be_invoked.MoveKey( _index, _key );
+                        int gen_ret = gen_to_be_invoked.MoveKey( _index, _key );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -297,7 +297,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        var gen_ret = gen_to_be_invoked.GetHashCode(  );
+                        int gen_ret = gen_to_be_invoked.GetHashCode(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -355,7 +355,7 @@ namespace XLua.CSObjectWrap
                     float _timeEnd = (float)LuaAPI.lua_tonumber(L, 2);
                     float _value = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        var gen_ret = UnityEngine.AnimationCurve.Constant( _timeStart, _timeEnd, _value );
+                        UnityEngine.AnimationCurve gen_ret = UnityEngine.AnimationCurve.Constant( _timeStart, _timeEnd, _value );
                         translator.Push(L, gen_ret);
                     
                     
@@ -385,7 +385,7 @@ namespace XLua.CSObjectWrap
                     float _timeEnd = (float)LuaAPI.lua_tonumber(L, 3);
                     float _valueEnd = (float)LuaAPI.lua_tonumber(L, 4);
                     
-                        var gen_ret = UnityEngine.AnimationCurve.Linear( _timeStart, _valueStart, _timeEnd, _valueEnd );
+                        UnityEngine.AnimationCurve gen_ret = UnityEngine.AnimationCurve.Linear( _timeStart, _valueStart, _timeEnd, _valueEnd );
                         translator.Push(L, gen_ret);
                     
                     
@@ -415,7 +415,7 @@ namespace XLua.CSObjectWrap
                     float _timeEnd = (float)LuaAPI.lua_tonumber(L, 3);
                     float _valueEnd = (float)LuaAPI.lua_tonumber(L, 4);
                     
-                        var gen_ret = UnityEngine.AnimationCurve.EaseInOut( _timeStart, _valueStart, _timeEnd, _valueEnd );
+                        UnityEngine.AnimationCurve gen_ret = UnityEngine.AnimationCurve.EaseInOut( _timeStart, _valueStart, _timeEnd, _valueEnd );
                         translator.Push(L, gen_ret);
                     
                     
@@ -446,7 +446,7 @@ namespace XLua.CSObjectWrap
                 {
                     object _o = translator.GetObject(L, 2, typeof(object));
                     
-                        var gen_ret = gen_to_be_invoked.Equals( _o );
+                        bool gen_ret = gen_to_be_invoked.Equals( _o );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -457,7 +457,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.AnimationCurve _other = (UnityEngine.AnimationCurve)translator.GetObject(L, 2, typeof(UnityEngine.AnimationCurve));
                     
-                        var gen_ret = gen_to_be_invoked.Equals( _other );
+                        bool gen_ret = gen_to_be_invoked.Equals( _other );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

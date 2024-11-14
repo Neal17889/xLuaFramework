@@ -9,8 +9,7 @@
 	</assembly>
 
 	<assembly fullname="UnityEngine.CoreModule">
-	    <type fullname="UnityEngine.Object" preserve="all"/>
-		<type fullname="UnityEngine.Vector2" preserve="all"/>
+	    <type fullname="UnityEngine.Vector2" preserve="all"/>
 		<type fullname="UnityEngine.Vector3" preserve="all"/>
 		<type fullname="UnityEngine.Vector4" preserve="all"/>
 		<type fullname="UnityEngine.Quaternion" preserve="all"/>
