@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 1210060256
+CRC: 1179324945
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 58df4a535a7e7f15fbf2e9d0eb7d8a94
+    Hash: ac8bfd3de0443aa63cb3c9743e5af0b4
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 3a5fbaab1e180b1b4ae5003eea655cae
+    Hash: c5abbe750e752e7d6e102b83a793da19
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 58df4a535a7e7f15fbf2e9d0eb7d8a94
+    Hash: ac8bfd3de0443aa63cb3c9743e5af0b4
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -21,11 +21,13 @@ ClassTypes:
 - Class: 48
   Script: {instanceID: 0}
 - Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
@@ -51,6 +53,8 @@ SerializeReferenceClassIdentifiers:
   ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.Navigation
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Slider/SliderEvent
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.SpriteState
 Assets:

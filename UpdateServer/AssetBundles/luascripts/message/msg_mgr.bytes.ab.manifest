@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 1246618556
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ce03e0a01b246024129c49273b0b497c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: ce03e0a01b246024129c49273b0b497c
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/BuildResources/LuaScripts/message/msg_mgr.bytes
+Dependencies: []

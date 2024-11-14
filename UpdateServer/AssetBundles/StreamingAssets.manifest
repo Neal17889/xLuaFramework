@@ -1,0 +1,84 @@
+ManifestFileVersion: 0
+CRC: 2608505401
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: luascripts/class.bytes.ab
+      Dependencies: {}
+    Info_1:
+      Name: luascripts/log.bytes.ab
+      Dependencies: {}
+    Info_2:
+      Name: luascripts/main.bytes.ab
+      Dependencies: {}
+    Info_3:
+      Name: scenes/test01.unity.ab
+      Dependencies:
+        Dependency_0: model/mat/test01.mat.ab
+    Info_4:
+      Name: scenes/test02.unity.ab
+      Dependencies:
+        Dependency_0: model/mat/test02.mat.ab
+    Info_5:
+      Name: audio/music/bgm-login-starrail.mp3.ab
+      Dependencies: {}
+    Info_6:
+      Name: audio/sound/sfx_click1.mp3.ab
+      Dependencies: {}
+    Info_7:
+      Name: luascripts/entity/playerentity.bytes.ab
+      Dependencies: {}
+    Info_8:
+      Name: luascripts/message/base_msg.bytes.ab
+      Dependencies: {}
+    Info_9:
+      Name: luascripts/message/msg_mgr.bytes.ab
+      Dependencies: {}
+    Info_10:
+      Name: luascripts/message/msg_test.bytes.ab
+      Dependencies: {}
+    Info_11:
+      Name: luascripts/scene/scene01.bytes.ab
+      Dependencies: {}
+    Info_12:
+      Name: luascripts/scene/scene02.bytes.ab
+      Dependencies: {}
+    Info_13:
+      Name: luascripts/ui/uilogin.bytes.ab
+      Dependencies: {}
+    Info_14:
+      Name: model/mat/player.mat.ab
+      Dependencies: {}
+    Info_15:
+      Name: model/mat/test01.mat.ab
+      Dependencies: {}
+    Info_16:
+      Name: model/mat/test02.mat.ab
+      Dependencies: {}
+    Info_17:
+      Name: model/prefabs/player.prefab.ab
+      Dependencies:
+        Dependency_0: model/mat/player.mat.ab
+    Info_18:
+      Name: ui/prefabs/uilogin.prefab.ab
+      Dependencies:
+        Dependency_0: ui/res/common_bg_02.png.ab
+    Info_19:
+      Name: ui/prefabs/uiregister.prefab.ab
+      Dependencies:
+        Dependency_0: ui/res/common_bg_04.png.ab
+    Info_20:
+      Name: ui/res/common_bg_01.png.ab
+      Dependencies: {}
+    Info_21:
+      Name: ui/res/common_bg_02.png.ab
+      Dependencies: {}
+    Info_22:
+      Name: ui/res/common_bg_03.png.ab
+      Dependencies: {}
+    Info_23:
+      Name: ui/res/common_bg_04.png.ab
+      Dependencies: {}
+    Info_24:
+      Name: ui/res/common_bg_05.png.ab
+      Dependencies: {}

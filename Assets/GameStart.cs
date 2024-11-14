@@ -1,4 +1,4 @@
-using System.Collections;
+锘縰sing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,33 +6,46 @@ public class GameStart : MonoBehaviour
 {
     public GameMode GameMode;
     public bool OpenLog;
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
-        Manager.Event.Subscribe(10000, OnLuaInit);
-
+        Manager.Event.Subscribe((int)GameEvent.StartLua, StartLua);
+        Manager.Event.Subscribe((int)GameEvent.GameInit, GameInit);
         AppConst.GameMode = this.GameMode;
         AppConst.OpenLog = this.OpenLog;
         DontDestroyOnLoad(this);
 
-        Manager.Resource.ParseVersionFile();//不走编辑器模式才需要
+        if (AppConst.GameMode == GameMode.UpdateMode)
+            this.gameObject.AddComponent<HotUpdate>();
+        else
+            Manager.Event.Fire((int)GameEvent.GameInit);
+    }
+	
+	private void GameInit(object args)
+    {
+        if (AppConst.GameMode != GameMode.EditorMode)
+            Manager.Resource.ParseVersionFile();
         Manager.Lua.Init();
     }
 
-    void OnLuaInit(object args)
+    private void StartLua(object args)
     {
         Manager.Lua.StartLua("main");
-        //仅用作测试，全局查找效率很低
         XLua.LuaFunction func = Manager.Lua.LuaEnv.Global.Get<XLua.LuaFunction>("Main");
         func.Call();
-
         Manager.Pool.CreateGameObjectPool("UI", 10);
         Manager.Pool.CreateGameObjectPool("Monster", 120);
         Manager.Pool.CreateGameObjectPool("Effect", 120);
         Manager.Pool.CreateAssetPool("AssetBundle", 10);
     }
 
+    
+
+
     private void OnApplicationQuit()
     {
-        Manager.Event.UnSubscribe(10000, OnLuaInit);
+        Manager.Event.UnSubscribe((int)GameEvent.StartLua, StartLua);
+        Manager.Event.UnSubscribe((int)GameEvent.GameInit, GameInit);
     }
 }
+

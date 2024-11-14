@@ -17,6 +17,8 @@ public class HotUpdate : MonoBehaviour
         public string fileName;
         public DownloadHandler fileData;
     }
+    //下载文件数量
+    int m_DownloadCount;
 
     /// <summary>
     /// 下载单个文件
@@ -62,6 +64,7 @@ public class HotUpdate : MonoBehaviour
             else if (webRequest.result == UnityWebRequest.Result.Success)
             {
                 Debug.LogFormat("Successfully connected and downloaded from: {0}", info.url);
+                yield return new WaitForSeconds(0.2f);
                 info.fileData = webRequest.downloadHandler;
                 onComplete?.Invoke(info);
                 webRequest.Dispose();
@@ -108,8 +111,15 @@ public class HotUpdate : MonoBehaviour
         return downFileInfos;
     }
 
+    GameObject loadingObj;
+    LoadingUI loadingUI;
     private void Start()
     {
+        GameObject go = Resources.Load<GameObject>("LoadingUI");
+        loadingObj = Instantiate(go);
+        loadingObj.transform.SetParent(this.transform);
+        loadingUI = loadingObj.GetComponent<LoadingUI>();
+
         if (IsFirstInstall())
         {
             ReleaseResources();
@@ -133,6 +143,7 @@ public class HotUpdate : MonoBehaviour
 
     private void ReleaseResources()
     {
+        m_DownloadCount = 0;
         string url = Path.Combine(PathUtil.ReadPath, AppConst.FileListName);
         DownFileInfo info = new() { url = url };
         StartCoroutine(DownloadFile(info, OnDownLoadReadPathFileListComplete));
@@ -143,6 +154,7 @@ public class HotUpdate : MonoBehaviour
         m_ReadPathFileListData = file.fileData.data;
         List<DownFileInfo> fileInfos = GetFileList(file.fileData.text, PathUtil.ReadPath);
         StartCoroutine(DownloadFile(fileInfos, OnReleaseFileComplete, OnReleaseAllFileComplete));
+        loadingUI.InitProgress(fileInfos.Count, "正在释放资源，不消耗流量...");
     }
 
     private void OnReleaseFileComplete(DownFileInfo info)
@@ -150,6 +162,8 @@ public class HotUpdate : MonoBehaviour
         Debug.LogFormat("OnReleaseFileComplete:{0}", info.url);
         string writePath = Path.Combine(PathUtil.ReadWritePath, info.fileName);
         FileUtil.WriteFile(writePath, info.fileData.data);
+        m_DownloadCount++;
+        loadingUI.UpdateProgress(m_DownloadCount);
     }
 
     private void OnReleaseAllFileComplete()
@@ -167,6 +181,7 @@ public class HotUpdate : MonoBehaviour
 
     private void OnDownLoadServerFileListComplete(DownFileInfo file)
     {
+        m_DownloadCount = 0;
         m_ServerFileListData = file.fileData.data;
         List<DownFileInfo> fileInfos = GetFileList(file.fileData.text, AppConst.ResourcesUrl);
         List<DownFileInfo> downListFiles = new();
@@ -180,7 +195,10 @@ public class HotUpdate : MonoBehaviour
             }
         }
         if (downListFiles.Count > 0)
+        {
             StartCoroutine(DownloadFile(fileInfos, OnUpdateFileComplete, OnUpdateAllFileComplete));
+            loadingUI.InitProgress(downListFiles.Count, "正在更新...");
+        }
         else
             EnterGame();
     }
@@ -190,25 +208,30 @@ public class HotUpdate : MonoBehaviour
         Debug.LogFormat("OnUpdateFileComplete:{0}", info.url);
         string writePath = Path.Combine(PathUtil.ReadWritePath, info.fileName);
         FileUtil.WriteFile(writePath, info.fileData.data);
+        m_DownloadCount++;
+        loadingUI.UpdateProgress(m_DownloadCount);
     }
 
     private void OnUpdateAllFileComplete()
     {
         FileUtil.WriteFile(Path.Combine(PathUtil.ReadWritePath, AppConst.FileListName), m_ServerFileListData);
         EnterGame();
+        loadingUI.InitProgress(0, "正在载入...");
     }
 
     private void EnterGame()
     {
-        Manager.Resource.ParseVersionFile();
-        Manager.Resource.LoadUI("UILogin", OnComplete);
+        Manager.Event.Fire((int)GameEvent.GameInit);
+        Destroy(loadingObj);
+        //Manager.Resource.ParseVersionFile();
+        //Manager.Resource.LoadUI("UILogin", OnComplete);
     }
 
-    private void OnComplete(UnityEngine.Object @object)
-    {
-        GameObject go = Instantiate(@object) as GameObject;
-        go.transform.SetParent(this.transform);
-        go.SetActive(true);
-        go.transform.localPosition = Vector3.zero;
-    }
+    //private void OnComplete(UnityEngine.Object @object)
+    //{
+    //    GameObject go = Instantiate(@object) as GameObject;
+    //    go.transform.SetParent(this.transform);
+    //    go.SetActive(true);
+    //    go.transform.localPosition = Vector3.zero;
+    //}
 }
