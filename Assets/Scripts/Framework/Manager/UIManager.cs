@@ -5,7 +5,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     //缓存UI，后续换成对象池
-    Dictionary<string, GameObject> m_UI = new Dictionary<string, GameObject>();
+    //Dictionary<string, GameObject> m_UI = new Dictionary<string, GameObject>();
 
     /// <summary>
     /// UI分组
@@ -42,19 +42,26 @@ public class UIManager : MonoBehaviour
     public void OpenUI(string uiName, string group, string luaName)
     {
         GameObject ui = null;
-        if (m_UI.TryGetValue(uiName, out ui))
+        Transform parent = GetUIGroup(group);
+        string uiPath = PathUtil.GetUIPath(uiName);
+        Object uiObj = Manager.Pool.Spawn("UI", uiPath);
+
+        if (uiObj != null)
         {
-            UILogic uILogic = this.GetComponent<UILogic>();
+            ui = uiObj as GameObject;
+            ui.transform.SetParent(parent, false);
+            UILogic uILogic = ui.GetComponent<UILogic>();
             uILogic.Open();
+            
             return;
         }
         Manager.Resource.LoadUI(uiName, (UnityEngine.Object obj) =>
         {
             GameObject ui = Instantiate(obj) as GameObject;
-            m_UI.Add(uiName, ui);
-            Transform parent = GetUIGroup(group);
+            
             ui.transform.SetParent(parent, false);
             UILogic uILogic = ui.AddComponent<UILogic>();
+            uILogic.AssetName = uiPath;
             uILogic.Init(luaName);
             uILogic.Open();
         });

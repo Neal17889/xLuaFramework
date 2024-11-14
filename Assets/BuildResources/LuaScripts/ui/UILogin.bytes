@@ -10,6 +10,8 @@ OnOpen = function()
     local btn_unpause_music = self.transform:Find("btn_unpause_music"):GetComponent("Button");
     local btn_stop_music = self.transform:Find("btn_stop_music"):GetComponent("Button");
     local btn_play_sound = self.transform:Find("ButtonOK"):GetComponent("Button");
+    local btn_pooltest = self.transform:Find("btn_pooltest"):GetComponent("Button");
+	local btn_close = self.transform:Find("btn_close"):GetComponent("Button");
 
     local slider_music_volume = self.transform:Find("slider_music_volume"):GetComponent("Slider");
     local slider_sound_volume = self.transform:Find("slider_sound_volume"):GetComponent("Slider");
@@ -18,6 +20,19 @@ OnOpen = function()
         function()
             Manager.Sound:PlayMusic("bgm-login-StarRail.mp3");
         end
+    );
+
+    btn_pooltest:OnClickSet(
+		function()
+			Manager.UI:OpenUI("UILogin", "UI", "ui.UILogin");
+			-- msg_mgr.get_msg("msg_test"):req_first_test(99999,"doubleq","******",{1,3,5});
+		end
+    );
+
+	btn_close:OnClickSet(
+		function()
+			self:Close();
+		end
     );
 
     btn_pause_music:OnClickSet(
